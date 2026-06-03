@@ -238,6 +238,7 @@
       border-radius: 6px;
       cursor: col-resize;
       user-select: none;
+      touch-action: none;
       background: #111;
     }
 
@@ -286,6 +287,11 @@
       align-items: center;
       justify-content: center;
       color: #444;
+    }
+
+    @media (pointer: coarse) {
+      .comp-handle { width: 44px; height: 44px; }
+      .comp-divider { width: 3px; }
     }
 
     .comp-badge {
@@ -554,7 +560,7 @@
   <!-- ── TL;DR ── -->
   <section class="section">
     <p class="tldr-box">
-      <strong>TL;DR</strong> &mdash; Low-cost thermal cameras have a reputation for being noisy and are presumed to be insufficient to capture subtle heat transport. We upend this conventional wisdom by a simple change in how we process microbolometric videos.
+      <strong>TL;DR</strong> &mdash; Low-cost thermal cameras have a reputation for being noisy and are presumed to be insufficient to capture subtle heat transport. We upend this conventional wisdom by a simple change in how we process microbolometric videos. Based on the physics of image formation in microbolometers, we show that first applying per-pixel 1D temporal transform (using a shift-invariant, linear phase, compact support filter) and then spatially denoising in the coefficient domain enables extracting rich spatiotemporal heat flows with existing low-cost hardware. 
     </p>
   </section>
 
@@ -575,9 +581,9 @@
           how the airflow disturbs and carries heat away from the object.
         </p>
         <div class="comparisons-grid" data-scene="1" data-comparisons='[{"label":"Intensity","raw":"static/videos/bunny_wind_draft/intensity_input.mp4","denoised":"static/videos/bunny_wind_draft/intensity_denoised.mp4"},{"label":"Cumulative","raw":"static/videos/bunny_wind_draft/cumulative2_input.mp4","denoised":"static/videos/bunny_wind_draft/cumulative2_denoised.mp4"},{"label":"Derivative","raw":"static/videos/bunny_wind_draft/temporal_deriv_input.mp4","denoised":"static/videos/bunny_wind_draft/temporal_deriv_denoised.mp4"},{"label":"Isocontour","raw":"static/videos/bunny_wind_draft/isocontour_input.mp4","denoised":"static/videos/bunny_wind_draft/isocontour_denoised.mp4"}]'></div>
-        <div class="plot-row" style="display:none">
+        <div class="plot-row">
           <span class="plot-row-label">Temporal Pixel Plot</span>
-          <div class="plot-scene-wrap" data-csv="static/data/scene1.csv" data-thumbnail="static/thumbnails/scene1.png">
+          <div class="plot-scene-wrap" data-csv="static/data/bunny_wind_draft.csv" data-thumbnail="static/thumbnails/bunny_wind_draft_thumbnail.png">
             <div class="thumbnail-wrap"></div>
             <div class="plot-container"></div>
           </div>
@@ -596,9 +602,9 @@
           that our method isolates and amplifies.
         </p>
         <div class="comparisons-grid" data-scene="2" data-fit="contain" data-comparisons='[{"label":"Intensity","raw":"static/videos/yodas_eyes_cropped/intensity_input.mp4","denoised":"static/videos/yodas_eyes_cropped/intensity_denoised.mp4"},{"label":"Derivative","raw":"static/videos/yodas_eyes_cropped/temporal_deriv_input.mp4","denoised":"static/videos/yodas_eyes_cropped/temporal_deriv_denoised.mp4"}]'></div>
-        <div class="plot-row" style="display:none">
+        <div class="plot-row">
           <span class="plot-row-label">Temporal Pixel Plot</span>
-          <div class="plot-scene-wrap" data-csv="static/data/scene2.csv" data-thumbnail="static/thumbnails/scene2.png">
+          <div class="plot-scene-wrap" data-csv="static/data/yodas_eyes.csv" data-thumbnail="static/thumbnails/yodas_eyes_thumbnail.png">
             <div class="thumbnail-wrap"></div>
             <div class="plot-container"></div>
           </div>
@@ -618,9 +624,9 @@
           that are invisible in raw footage but clearly revealed after processing.
         </p>
         <div class="comparisons-grid" data-scene="3" data-comparisons='[{"label":"Intensity","raw":"static/videos/book_and_keyboard/intensity2_input.mp4","denoised":"static/videos/book_and_keyboard/intensity2_denoised.mp4"},{"label":"Cumulative","raw":"static/videos/book_and_keyboard/cumulative_input.mp4","denoised":"static/videos/book_and_keyboard/cumulative_denoised.mp4"},{"label":"Derivative","raw":"static/videos/book_and_keyboard/temporal_deriv_input.mp4","denoised":"static/videos/book_and_keyboard/temporal_deriv_denoised.mp4"},{"label":"Isocontour","raw":"static/videos/book_and_keyboard/isocontour_input.mp4","denoised":"static/videos/book_and_keyboard/isocontour_denoised.mp4"}]'></div>
-        <div class="plot-row" style="display:none">
+        <div class="plot-row">
           <span class="plot-row-label">Temporal Pixel Plot</span>
-          <div class="plot-scene-wrap" data-csv="static/data/scene3.csv" data-thumbnail="static/thumbnails/scene3.png">
+          <div class="plot-scene-wrap" data-csv="static/data/book_and_keyboard.csv" data-thumbnail="static/thumbnails/book_and_keyboard_thumbnail.png">
             <div class="thumbnail-wrap"></div>
             <div class="plot-container"></div>
           </div>
@@ -640,9 +646,9 @@
           but becomes strikingly visible after temporal processing.
         </p>
         <div class="comparisons-grid" data-scene="4" data-comparisons='[{"label":"Intensity","raw":"static/videos/vehicle_exhaust/intensity_input.mp4","denoised":"static/videos/vehicle_exhaust/intensity_denoised.mp4"},{"label":"Derivative","raw":"static/videos/vehicle_exhaust/temporal_deriv_input.mp4","denoised":"static/videos/vehicle_exhaust/temporal_deriv_denoised.mp4"}]'></div>
-        <div class="plot-row" style="display:none">
+        <div class="plot-row">
           <span class="plot-row-label">Temporal Pixel Plot</span>
-          <div class="plot-scene-wrap" data-csv="static/data/scene4.csv" data-thumbnail="static/thumbnails/scene4.png">
+          <div class="plot-scene-wrap" data-csv="static/data/vehicle_exhaust.csv" data-thumbnail="static/thumbnails/vehicle_exhaust_thumbnail.png">
             <div class="thumbnail-wrap"></div>
             <div class="plot-container"></div>
           </div>
@@ -661,9 +667,9 @@
           heat redistribution patterns driven by the fan's rotation frequency.
         </p>
         <div class="comparisons-grid" data-scene="5" data-comparisons='[{"label":"Intensity","raw":"static/videos/spinning_fan/intensity_input.mp4","denoised":"static/videos/spinning_fan/intensity_denoised.mp4"},{"label":"Derivative","raw":"static/videos/spinning_fan/temporal_deriv_input.mp4","denoised":"static/videos/spinning_fan/temporal_deriv_denoised.mp4"}]'></div>
-        <div class="plot-row" style="display:none">
+        <div class="plot-row">
           <span class="plot-row-label">Temporal Pixel Plot</span>
-          <div class="plot-scene-wrap" data-csv="static/data/scene5.csv" data-thumbnail="static/thumbnails/scene5.png">
+          <div class="plot-scene-wrap" data-csv="static/data/spinning_fan.csv" data-thumbnail="static/thumbnails/spinning_fan_thumbnail.png">
             <div class="thumbnail-wrap"></div>
             <div class="plot-container"></div>
           </div>
@@ -682,9 +688,9 @@
           emissivity, producing subtle periodic intensity oscillations our method captures.
         </p>
         <div class="comparisons-grid" data-scene="6" data-comparisons='[{"label":"Intensity","raw":"static/videos/rotating_polarizer/intensity_input.mp4","denoised":"static/videos/rotating_polarizer/intensity_denoised.mp4"},{"label":"Derivative","raw":"static/videos/rotating_polarizer/temporal_deriv_input.mp4","denoised":"static/videos/rotating_polarizer/temporal_deriv_denoised.mp4"}]'></div>
-        <div class="plot-row" style="display:none">
+        <div class="plot-row">
           <span class="plot-row-label">Temporal Pixel Plot</span>
-          <div class="plot-scene-wrap" data-csv="static/data/scene6.csv" data-thumbnail="static/thumbnails/scene6.png">
+          <div class="plot-scene-wrap" data-csv="static/data/rotating_polarizer.csv" data-thumbnail="static/thumbnails/rotating_polarizer_thumbnail.png">
             <div class="thumbnail-wrap"></div>
             <div class="plot-container"></div>
           </div>
@@ -704,9 +710,9 @@
           invisible in broadband thermal imaging.
         </p>
         <div class="comparisons-grid" data-scene="7" data-comparisons='[{"label":"Intensity","raw":"static/videos/bandpass_lwir_filters/intensity_input.mp4","denoised":"static/videos/bandpass_lwir_filters/intensity_denoised.mp4"},{"label":"Derivative","raw":"static/videos/bandpass_lwir_filters/temporal_deriv_input.mp4","denoised":"static/videos/bandpass_lwir_filters/temporal_deriv_denoised.mp4"},{"label":"Isocontour","raw":"static/videos/bandpass_lwir_filters/isocontour_input.mp4","denoised":"static/videos/bandpass_lwir_filters/isocontour_denoised.mp4"}]'></div>
-        <div class="plot-row" style="display:none">
+        <div class="plot-row">
           <span class="plot-row-label">Temporal Pixel Plot</span>
-          <div class="plot-scene-wrap" data-csv="static/data/scene7.csv" data-thumbnail="static/thumbnails/scene7.png">
+          <div class="plot-scene-wrap" data-csv="static/data/bandpass_lwir_filters.csv" data-thumbnail="static/thumbnails/bandpass_lwir_filters_thumbnail.png">
             <div class="thumbnail-wrap"></div>
             <div class="plot-container"></div>
           </div>
@@ -792,7 +798,8 @@
 
     function syncVideos(master, follower) {
       master.addEventListener('timeupdate', () => {
-        if (Math.abs(master.currentTime - follower.currentTime) > 0.15)
+        if (follower.readyState < 2 || follower.paused) return;
+        if (Math.abs(master.currentTime - follower.currentTime) > 0.05)
           follower.currentTime = master.currentTime;
       });
     }
@@ -955,6 +962,17 @@
       return wrapper;
     }
 
+    // Shared observer: activate each video slot only when it scrolls into view
+    const videoPanelMap = new WeakMap();
+    const videoObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const panel = videoPanelMap.get(e.target);
+        if (panel && panel._activate) panel._activate();
+        videoObserver.unobserve(e.target);
+      });
+    }, { rootMargin: '150px' });
+
     function buildViewer(grid) {
       const defs    = JSON.parse(grid.dataset.comparisons || '[]');
       if (!defs.length) return;
@@ -973,7 +991,10 @@
           ? buildSlider(def.raw, def.denoised, fps, speedup, fit)
           : buildPlaceholder();
         slot.appendChild(panel);
-        if (panel._activate) panel._activate();
+        if (panel._activate) {
+          videoPanelMap.set(slot, panel);
+          videoObserver.observe(slot);
+        }
         grid.appendChild(slot);
       });
     }
