@@ -13,31 +13,35 @@
 
     body {
       font-family: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
-      background: #fff;
+      background:
+        radial-gradient(circle at 50% 0%, #f7f1ea 0, transparent 34rem),
+        #fff;
       color: #1a1a1a;
       line-height: 1.6;
     }
 
     /* ── Hero ── */
     .hero {
-      max-width: 860px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 3.5rem 1.5rem 2.5rem;
+      padding: 4.8rem 1.5rem 3.8rem;
       text-align: center;
     }
 
     .paper-title {
       font-family: "EB Garamond", Georgia, serif;
-      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-size: clamp(2.25rem, 4.5vw, 3.35rem);
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.12;
       color: #111;
-      margin-bottom: 1.6rem;
+      margin: 0 auto 1.7rem;
     }
 
     .authors {
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
+      max-width: 900px;
+      margin: 0 auto 1.35rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     .authors a {
@@ -60,47 +64,55 @@
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.6rem;
+      margin: 1.1rem 0 0;
     }
 
     .affiliation img {
-      height: 28px;
+      height: 30px;
       width: auto;
     }
 
     .venue-tag {
       display: inline-block;
-      font-size: 1.1rem;
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 1.35rem;
       font-weight: 600;
-      letter-spacing: 0.04em;
-      color: #C75B00;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+      color: #9b4b0a;
     }
 
-    /* ── Callout ── */
-    .callout-wrap {
-      max-width: 860px;
-      margin: 0 auto 3rem;
-      padding: 0 1.5rem;
+    .paper-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      padding: 0.65rem 1.15rem;
+      border: 1px solid #07508f;
+      border-radius: 999px;
+      background: #0b5ea8;
+      box-shadow: 0 4px 12px rgba(11, 94, 168, 0.2);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1;
+      text-decoration: none;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .callout {
-      border: 1.5px solid #f0c040;
-      background: #fffbea;
-      border-radius: 8px;
-      padding: 1rem 1.4rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 1.05rem;
+    .paper-link:hover {
+      background: #074b87;
+      box-shadow: 0 6px 16px rgba(11, 94, 168, 0.28);
+      transform: translateY(-1px);
     }
 
-    .callout-icon { font-size: 1.3rem; line-height: 1.4; flex-shrink: 0; }
-    .callout-text { color: #3d2f00; }
-    .callout-text strong { font-weight: 600; }
+    .paper-link svg {
+      width: 1rem;
+      height: 1rem;
+    }
 
     /* ── Sections ── */
     .section {
-      max-width: 860px;
+      max-width: 960px;
       margin: 0 auto 4rem;
       padding: 0 1.5rem;
     }
@@ -116,10 +128,11 @@
 
     /* ── TL;DR ── */
     .tldr-box {
-      background: #fff8f8;
-      border: 1.5px solid #e8b4bc;
+      background: #fff;
+      border: 1px solid #eadeda;
       border-left: 5px solid #C75B00;
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 0 5px 18px rgba(85, 50, 22, 0.06);
       padding: 1.2rem 1.6rem;
       font-size: 1.1rem;
       color: #1a1a1a;
@@ -540,20 +553,15 @@
       <a href="https://zqyuan.com/">Zeqing Yuan</a><span class="dot">&middot;</span>
       <a href="https://www.cs.cmu.edu/~srinivas/">Srinivasa Narasimhan</a>
     </p>
+    <div class="venue-tag">IEEE International Conference on Computational Photography (ICCP) 2026</div>
     <div class="affiliation">
       <img src="static/images/CMU.png" alt="Carnegie Mellon University" />
     </div>
+    <a class="paper-link" href="static/paper.pdf" aria-label="Download paper PDF">
+      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 0h5.5L13 3.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2Zm5 1.5V4h2.5L9 1.5ZM4 6.25A.75.75 0 0 0 4.75 7h6.5a.75.75 0 0 0 0-1.5h-6.5a.75.75 0 0 0-.75.75Zm.75 2.25a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5ZM4 11.75a.75.75 0 0 0 .75.75h4a.75.75 0 0 0 0-1.5h-4a.75.75 0 0 0-.75.75Z"/></svg>
+      <span>Paper</span>
+    </a>
   </header>
-
-  <!-- ── Callout ── -->
-  <div class="callout-wrap">
-    <div class="callout">
-      <span class="callout-icon">&#128276;</span>
-      <p class="callout-text">
-        <strong>Coming soon &mdash;</strong> Paper, code, and data will be released soon.
-      </p>
-    </div>
-  </div>
 
   <!-- ── TL;DR ── -->
   <section class="section">
