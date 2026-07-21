@@ -110,6 +110,26 @@
       height: 1rem;
     }
 
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .paper-link.secondary {
+      border: 1px solid #b0b0b0;
+      background: #f4f4f4;
+      color: #333;
+      box-shadow: none;
+    }
+
+    .paper-link.secondary:hover {
+      background: #e8e8e8;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+
     /* ── Sections ── */
     .section {
       max-width: 960px;
@@ -513,6 +533,7 @@
       padding: 0.3rem 0.7rem;
       font-family: "Source Sans 3", sans-serif;
       font-size: 0.8rem;
+      line-height: 1;
       font-weight: 600;
       color: #57606a;
       background: #fff;
@@ -520,6 +541,12 @@
       border-radius: 6px;
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
+    }
+
+    .copy-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
     }
 
     .copy-btn:hover { background: #f3f4f6; color: #111; }
@@ -557,10 +584,24 @@
     <div class="affiliation">
       <img src="static/images/CMU.png" alt="Carnegie Mellon University" />
     </div>
-    <a class="paper-link" href="static/paper.pdf" aria-label="Download paper PDF">
-      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 0h5.5L13 3.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2Zm5 1.5V4h2.5L9 1.5ZM4 6.25A.75.75 0 0 0 4.75 7h6.5a.75.75 0 0 0 0-1.5h-6.5a.75.75 0 0 0-.75.75Zm.75 2.25a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5ZM4 11.75a.75.75 0 0 0 .75.75h4a.75.75 0 0 0 0-1.5h-4a.75.75 0 0 0-.75.75Z"/></svg>
-      <span>Paper</span>
-    </a>
+    <div class="hero-links">
+      <a class="paper-link" href="static/paper.pdf" target="_blank" rel="noopener" aria-label="Download paper PDF">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 0h5.5L13 3.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2Zm5 1.5V4h2.5L9 1.5ZM4 6.25A.75.75 0 0 0 4.75 7h6.5a.75.75 0 0 0 0-1.5h-6.5a.75.75 0 0 0-.75.75Zm.75 2.25a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5ZM4 11.75a.75.75 0 0 0 .75.75h4a.75.75 0 0 0 0-1.5h-4a.75.75 0 0 0-.75.75Z"/></svg>
+        <span>Paper</span>
+      </a>
+      <a class="paper-link secondary" href="https://github.com/srmanikandasriram/temporal_spatial_video_processor" target="_blank" rel="noopener" aria-label="Code repository">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span>Code</span>
+      </a>
+      <a class="paper-link secondary" href="https://huggingface.co/datasets/mani-ramanagopal/subtle-heat-flows" target="_blank" rel="noopener" aria-label="Dataset on Hugging Face">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3Zm2 1v8h8V4H4Zm1.5 1.5h2v2h-2v-2Zm3 3h2v2h-2v-2Z"/></svg>
+        <span>Dataset</span>
+      </a>
+      <a class="paper-link secondary" href="#bibtex-section" aria-label="Jump to BibTeX citation">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 2.5A1.5 1.5 0 0 1 3.5 1h6.379a1.5 1.5 0 0 1 1.06.44l2.622 2.621A1.5 1.5 0 0 1 14 5.121V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5v-11ZM4.5 6a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6Zm0 2.5a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6ZM4 11.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Z"/></svg>
+        <span>BibTeX</span>
+      </a>
+    </div>
   </header>
 
   <!-- ── TL;DR ── -->
@@ -736,23 +777,6 @@
         <a href="static/poster.pdf">Download the poster</a> instead.
       </p>
     </iframe>
-  </section>
-
-  <!-- ── Citation ── -->
-  <section class="section" style="display:none">
-    <h2 class="section-title">Citation</h2>
-    <div class="citation-block" id="bibtex">
-      <button class="copy-btn" onclick="copyCitation(this)" aria-label="Copy BibTeX">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"/></svg>
-        Copy
-      </button>@inproceedings{ramanagopal2026revealingsubtleheat,
-  title     = {Revealing Subtle Heat Flows all around us using Microbolometric Videos},
-  author    = {Ramanagopal, Mani and Oharazawa, Akihiko and Narayanan, Sriram and
-               Yuan, Zeqing and Narasimhan, Srinivasa},
-  journal   = {IEEE Transactions on Pattern Analysis and Machine Intelligence
-               (PAMI)},
-  year      = {2026}
-}</div>
   </section>
 
   <script>
@@ -1141,6 +1165,22 @@
     document.querySelectorAll('.plot-scene-wrap[data-csv]').forEach(el => observer.observe(el));
   })();
   </script>
+
+  <!-- ── BibTeX ── -->
+  <section class="section" id="bibtex-section">
+    <h2 class="section-title">BibTeX</h2>
+    <div class="citation-block" id="bibtex">
+      <button class="copy-btn" onclick="copyCitation(this)" aria-label="Copy BibTeX">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"/></svg>
+        Copy
+      </button>@inproceedings{ramanagopal2026revealingsubtleheat,
+  title     = {Revealing Subtle Heat Flows all around us using Microbolometric Videos},
+  author    = {Ramanagopal, Mani and Oharazawa, Akihiko and Narayanan, Sriram and
+               Yuan, Zeqing and Narasimhan, Srinivasa},
+  booktitle = {IEEE International Conference on Computational Photography (ICCP)},
+  year      = {2026}
+}</div>
+  </section>
 
   <!-- ── Footer ── -->
   <footer>
